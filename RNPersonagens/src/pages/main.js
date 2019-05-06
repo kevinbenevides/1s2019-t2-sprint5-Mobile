@@ -5,6 +5,15 @@ import { Text, Image, StyleSheet, View, FlatList } from "react-native";
 import api from "../services/api";
 
 class Main extends Component {
+    static navigationOptions = {
+        tabBarIcon: ({ tintColor }) => (
+          <Image
+            source={require("../assets/img/superhero_ironman_comic_hero_icon-icons.com_69236.png")}
+            style={styles.tabNavigatorIconHome}
+          />
+        )
+      };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -40,11 +49,15 @@ class Main extends Component {
         );
     }
     renderizaItem = ({ item }) => (
-        <View>
-            <View style={styles.mainLista}>
-                <Text>{item.nome}</Text>
-                <Text>{item.lancamento}</Text>
-                <Image style={{ width: 66, height: 58 }} source={{ uri: item.urlImagem }} />
+        <View style={styles.mainLista}>
+            <View style={styles.Lista}>
+                <View style={styles.mainImg}>
+                    <Image style={styles.listaImg} source={{ uri: item.urlImagem }} />
+                </View>
+                <View style={styles.mainText}>
+                    <Text style={styles.listaText}>{item.nome}</Text>
+                    <Text style={styles.listaText}>{item.lancamento}</Text>                    
+                </View>
             </View>
         </View>
     )
@@ -69,11 +82,49 @@ const styles = StyleSheet.create({
     },
 
     mainLista:{
-        backgroundColor:"#666",
-        borderColor:"black",
-        marginTop: 5
+        justifyContent:"center",
+        alignItems:"center",
+        marginTop: 10,
+        marginBottom: 55,
+    },
 
-    }
+    Lista:{
+        justifyContent:"center",
+        alignItems:"center",
+        backgroundColor:"#666",
+        padding:15,
+        width:"80%",
+        borderRadius:10,
+    },
+
+    mainImg:{
+        justifyContent: "center",
+        alignItems:"center"
+    },
+
+    listaImg:{
+        marginTop:10,
+        width: 195, 
+        height: 190, 
+        borderRadius: 130
+    },
+
+    mainText:{
+        marginTop:10,
+        marginLeft:30,
+    },
+
+    listaText:{
+        color:"white",
+        fontSize:20
+    },
+
+    tabNavigatorIconHome: {
+        width: 35,
+        height: 35,
+        // tintColor: "purple"
+        tintColor: "#FFFFFF"
+      }
 })
 
 export default Main;

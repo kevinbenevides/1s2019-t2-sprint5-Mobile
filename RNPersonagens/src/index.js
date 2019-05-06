@@ -6,7 +6,22 @@ const MainNavigator = createBottomTabNavigator(
     {
         Main,
         Desenvolvedor
-    }
+    },
+    {
+        swipeEnabled: true,
+        tabBarOptions: {
+          showLabel: false,
+          showIcon: true,
+          inactiveBackgroundColor: "#666",
+          activeBackgroundColor: "#333",
+          activeTintColor: "#FFFFFF",
+          inactiveTintColor: "#FFFFFF",
+          style: {
+            height: 50,
+            
+          }
+        }
+      }
 )
 
 export default createAppContainer(MainNavigator)
